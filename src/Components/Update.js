@@ -1,30 +1,54 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams , Link, useNavigate } from 'react-router-dom'
 
-const Newemployee = () => {
+
+
+const Update = () => {
+
+    const { empid } = useParams();
+
+    //const [empinfo, setEmpinfo] = useState({});
+
+    useEffect(() => {
+
+        fetch('http://localhost:3000/employee/' + empid).then((res) => {
+            return res.json();
+        }).then((resp) => {
+
+            setId(resp.id);
+            setName(resp.name);
+            setEmail(resp.email);
+            setPhone(resp.phone);
+            setPosition(resp.position);
+
+        }).catch((err) => {
+            console.log(err.message)
+        })
+    },[]);
 
     const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [position, setPosition] = useState('');
+
     const navigation = useNavigate();
 
     const handlesubmit = (event) => {
         event.preventDefault();
-        const empinfo = {name,email,phone,position};
+        const empinfo = {id,name,email,phone,position};
         
 
-        fetch("http://localhost:3000/employee", {
+        fetch("http://localhost:3000/employee/" +empid, {
 
-        method: "POST",
+        method: "PUT",
         headers: {"content-type":"application/json"},
         body:JSON.stringify(empinfo)
 
 
         }).then((res) => {
 
-            alert('save successfully')
+            alert('edit successfully')
             navigation("/")
 
 
@@ -35,7 +59,6 @@ const Newemployee = () => {
     }
 
     return (
-
         <div>
 
             <div className="row">
@@ -95,7 +118,7 @@ const Newemployee = () => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <button className="btn btn-success" type="submit">Save</button>
-                                           <Link to='/' className='btn btn-danger'>back</Link>
+                                            <Link to='/' className='btn btn-danger'>back</Link>
 
                                         </div>
                                     </div>
@@ -111,8 +134,7 @@ const Newemployee = () => {
                 </div>
             </div>
         </div>
-    );
-
+    )
 }
 
-export default Newemployee;
+export default Update

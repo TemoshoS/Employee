@@ -1,11 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link , useNavigate} from 'react-router-dom';
+
 
 const Home = () => {
 
+    const [search, setSearch] = useState('');
+
+
+    const navigation = useNavigate();
+    const employeedelete = (id) => {
+         if(window.confirm('are you sure want to delete?')){
+
+            fetch('http://localhost:3000/employee/' +id,{
+                method: "DELETE"
+               
+            }).then((res)=>{
+                alert('Removed successfully')
+                window.location.reload();
+            }).catch((err)=>{
+                console.log(err.message)
+            })
+         }
+
+    }
+
+    const employeeupdate = (id) => {
+        navigation('/employee/edit/'+id)
+
+    }
+
     const [emp, setEmployee] = useState(null);
     useEffect(() => {
-        fetch("http://localhost:8000/employee").then((res) => {
+        fetch("http://localhost:3000/employee").then((res) => {
             return res.json();
         }).then((resp) => {
             setEmployee(resp);
@@ -27,32 +53,40 @@ const Home = () => {
                     <div>
                         <Link to='/employee/create' className='btn btn-success'>Add Employee</Link>
                     </div>
+                    <input onChange={(event) => setSearch(event.target.value)} placeholder='search employee'/>
                     <table className="table table-bordered">
                         <thead className="bg-dark text-white">
                             <tr>
-                                <td>ID</td>
-                                <td>Name and Surname</td>
-                                <td>Email address</td>
-                                <td>Phone Number</td>
-                                <td>Employe Position</td>
-                                <td>Image</td>
+                                <th>ID</th>
+                                <th>Name and Surname</th>
+                                <th>Email address</th>
+                                <th>Phone Number</th>
+                                <th>Employe Position</th>
+                                <th>Image</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            {  emp &&
-                            emp.map(item=>(
-                                < tr key={item.id}>
-                                
-                                <td>{item.id}</td>
-                                <td>{item.name}</td>
-                                <td>{item.email}</td>
-                                <td>{item.phone}</td>
-                                <td>{item.position}</td>
-                                
-                                </tr>
-                            ))
-                            
+                            {emp &&
+                                emp.filter((item) =>{
+                                    return search.toLowerCase()===''? item: item.name.toLowerCase().includes(search);
+                                }).map(item => (
+                                    < tr key={item.id}>
+
+                                        <td>{item.id}</td>
+                                        <td>{item.name}</td>
+                                        <td>{item.email}</td>
+                                        <td>{item.phone}</td>
+                                        <td>{item.position}</td>
+                                        <td></td>
+                                        <td><a onClick={() => { employeeupdate(item.id) }} className='btn btn-success'>edit</a>
+                                            <a onClick={() => { employeedelete(item.id) }} className='btn btn-danger'>Delete</a>
+
+                                        </td>
+                                    </tr>
+                                ))
+
                             }
 
 

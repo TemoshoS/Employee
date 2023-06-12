@@ -12,21 +12,28 @@
       "name": "James madidilane",
       "email": "james@gmail.com",
       "phone": "076499837",
-      "position": "CEO"
+      "position": "employed"
     },
     {
-      "name": "Temosho",
-      "email": "temoshomaduane@gmail.com",
+      "name": "AB MARODI",
+      "email": "marodi@gmail.com",
       "phone": "+27721371977",
       "position": "CEO",
-      "id": 3
+      "id": 5
     },
     {
-      "name": "Thabo",
+      "id": 6,
+      "name": "temosho shaku",
       "email": "temoshomaduane@gmail.com",
-      "phone": "098876554544",
-      "position": "Manager",
-      "id": 4
+      "phone": "0721371977",
+      "position": "ceo"
+    },
+    {
+      "name": "temosho shaku",
+      "email": "temoshomaduane@gmail.com",
+      "phone": "0721371977",
+      "position": "",
+      "id": 7
     }
   ]
 }
