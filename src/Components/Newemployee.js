@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
 
 const Newemployee = () => {
 
@@ -8,18 +10,28 @@ const Newemployee = () => {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [position, setPosition] = useState('');
+    const [image, setImage] = useState('');
+
     const navigation = useNavigate();
+
+
+     //handling images
+     const handleImage = (event) => {
+        console.log(event.target.files)
+        setImage(event.target.files[0])
+    }
+
 
     const handlesubmit = (event) => {
         event.preventDefault();
-        const empinfo = {name,email,phone,position};
-        
+        const empinfo = { name, email, phone, position, image};
 
-        fetch("http://localhost:3000/employee", {
 
-        method: "POST",
-        headers: {"content-type":"application/json"},
-        body:JSON.stringify(empinfo)
+        fetch("http://localhost:8000/employee", {
+
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(empinfo)
 
 
         }).then((res) => {
@@ -33,6 +45,8 @@ const Newemployee = () => {
         })
 
     }
+   
+    
 
     return (
 
@@ -87,15 +101,15 @@ const Newemployee = () => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>Image</label>
-                                            <input className="form-control"></input>
+                                            <input  onChange={handleImage} name='file' className="form-control" type='file'></input>
                                         </div>
                                     </div>
 
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <button className="btn btn-success" type="submit">Save</button>
-                                           <Link to='/' className='btn btn-danger'>back</Link>
+                                            <button className="btn btn-success"  >Save</button>
+                                            <Link to='/' className='btn btn-danger'>back</Link>
 
                                         </div>
                                     </div>

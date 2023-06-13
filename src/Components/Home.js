@@ -11,7 +11,7 @@ const Home = () => {
     const employeedelete = (id) => {
          if(window.confirm('are you sure want to delete?')){
 
-            fetch('http://localhost:3000/employee/' +id,{
+            fetch('http://localhost:8000/employee/' +id,{
                 method: "DELETE"
                
             }).then((res)=>{
@@ -31,7 +31,7 @@ const Home = () => {
 
     const [emp, setEmployee] = useState(null);
     useEffect(() => {
-        fetch("http://localhost:3000/employee").then((res) => {
+        fetch("http://localhost:8000/employee").then((res) => {
             return res.json();
         }).then((resp) => {
             setEmployee(resp);
@@ -51,7 +51,7 @@ const Home = () => {
                 <div className="card-body">
 
                     <div>
-                        <Link to='/employee/create' className='btn btn-success'>Add Employee</Link>
+                        <Link to='/employee/create' className='button-create'>Add Employee</Link>
                     </div>
                     <input onChange={(event) => setSearch(event.target.value)} placeholder='search employee'/>
                     <table className="table table-bordered">
@@ -63,7 +63,7 @@ const Home = () => {
                                 <th>Phone Number</th>
                                 <th>Employe Position</th>
                                 <th>Image</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -79,7 +79,14 @@ const Home = () => {
                                         <td>{item.email}</td>
                                         <td>{item.phone}</td>
                                         <td>{item.position}</td>
-                                        <td></td>
+                                        <td >
+                                            
+
+                                            <img src={`${item.image}`} style={{width:150, height:150}}/>
+                                            
+                                            </td>
+
+                                        
                                         <td><a onClick={() => { employeeupdate(item.id) }} className='btn btn-success'>edit</a>
                                             <a onClick={() => { employeedelete(item.id) }} className='btn btn-danger'>Delete</a>
 

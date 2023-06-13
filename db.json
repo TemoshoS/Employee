@@ -5,35 +5,62 @@
       "name": "John oka",
       "email": "tmz@gmail.com",
       "phone": "0721371977",
-      "position": "Manager"
+      "position": "Manager",
+      "image": "Images/green.jpg"
     },
     {
       "id": 2,
       "name": "James madidilane",
       "email": "james@gmail.com",
       "phone": "076499837",
-      "position": "employed"
+      "position": "employed",
+      "image": "Images/green.jpg"
     },
     {
       "name": "AB MARODI",
       "email": "marodi@gmail.com",
       "phone": "+27721371977",
       "position": "CEO",
-      "id": 5
+      "id": 5,
+      "image": "Images/green.jpg"
     },
     {
       "id": 6,
       "name": "temosho shaku",
       "email": "temoshomaduane@gmail.com",
       "phone": "0721371977",
-      "position": "ceo"
+      "position": "ceo",
+      "image": "Images/green.jpg"
     },
     {
       "name": "temosho shaku",
       "email": "temoshomaduane@gmail.com",
       "phone": "0721371977",
       "position": "",
-      "id": 7
+      "id": 7,
+      "image": "Images/green.jpg"
+    },
+    {
+      "name": "Peter Nkosi",
+      "email": "peter@gmail.com",
+      "phone": "0744637892",
+      "position": "Developer",
+      "id": 8
+    },
+    {
+      "name": "Temosho",
+      "email": "temoshomaduane@gmail.com",
+      "phone": "+27721371977",
+      "position": "Chief",
+      "id": 9
+    },
+    {
+      "name": "Caps lock",
+      "email": "caps@gmail.com",
+      "phone": "08678367654",
+      "position": "CEO",
+      "image": {},
+      "id": 11
     }
   ]
 }
