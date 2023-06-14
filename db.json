@@ -14,7 +14,7 @@
       "email": "james@gmail.com",
       "phone": "076499837",
       "position": "employed",
-      "image": "Images/green.jpg"
+      "image": "Images/food.jpg"
     },
     {
       "name": "AB MARODI",
@@ -55,12 +55,50 @@
       "id": 9
     },
     {
-      "name": "Caps lock",
-      "email": "caps@gmail.com",
-      "phone": "08678367654",
-      "position": "CEO",
-      "image": {},
+      "id": 10
+    },
+    {
+      "name": "temosho shaku",
+      "email": "temoshomaduane@gmail.com",
+      "phone": "0721371977",
+      "position": "ceo",
       "id": 11
+    },
+    {
+      "id": 12
+    },
+    {
+      "id": 13
+    },
+    {
+      "name": "temosho shaku",
+      "email": "temoshomaduane@gmail.com",
+      "phone": "0721371977",
+      "position": "AB",
+      "image": {},
+      "id": 14
+    },
+    {
+      "id": 15
+    },
+    {
+      "name": "temosho shaku",
+      "email": "temoshomaduane@gmail.com",
+      "phone": "0721371977",
+      "position": "chief",
+      "id": 16
+    },
+    {
+      "id": 17
+    },
+    {
+      "id": 18
+    },
+    {
+      "id": 19
+    },
+    {
+      "id": 20
     }
   ]
 }

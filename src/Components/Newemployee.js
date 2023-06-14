@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+
 
 
 const Newemployee = () => {
 
-    const [id, setId] = useState('');
+    //const [id, setId] = useState('');
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
@@ -13,18 +13,41 @@ const Newemployee = () => {
     const [image, setImage] = useState('');
 
     const navigation = useNavigate();
+  
+    //handling images
+    const handleImage = async(event) => {
 
-
-     //handling images
-     const handleImage = (event) => {
-        console.log(event.target.files)
-        setImage(event.target.files[0])
+      setImage(event.target.files[0])
+       
     }
+
+    const handleUpload =() => {
+
+        if (image) {
+
+            const formData = new FormData();
+            formData.append('image', image);
+            fetch("http://localhost:8000/employee", {
+
+            method: "POST",
+            body: formData
+
+        }).then((res) => {
+
+        }).catch((err) => {
+            console.log(err.message)
+        })
+
+        }
+    }
+
+    
+
 
 
     const handlesubmit = (event) => {
         event.preventDefault();
-        const empinfo = { name, email, phone, position, image};
+        const empinfo = { name, email, phone, position};
 
 
         fetch("http://localhost:8000/employee", {
@@ -45,34 +68,31 @@ const Newemployee = () => {
         })
 
     }
-   
-    
+
+
 
     return (
 
-        <div>
+       <div>
 
             <div className="row">
                 <div className="offset-lg-3 col-lg-6">
                     <form className="container" onSubmit={handlesubmit}>
-
+                        <div className="container bg-info text-white border py-3 my-3">
+                            <h1>Add new employee </h1>
+                        </div>
                         <div className="card" style={{ textAlign: "left" }}>
 
                             <div className="card-body">
 
                                 <div className="row">
 
-                                    <div className="col-lg-12">
-                                        <div className="form-group">
-                                            <label>ID</label>
-                                            <input value={id} disabled="disabled" className="form-control"></input>
-                                        </div>
-                                    </div>
+                                    
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>Name and Surname</label>
-                                            <input value={name} onChange={event => setName(event.target.value)} className="form-control"></input>
+                                            <input required value={name} onChange={event => setName(event.target.value)} className="form-control"></input>
 
                                         </div>
                                     </div>
@@ -80,36 +100,38 @@ const Newemployee = () => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>Email</label>
-                                            <input value={email} onChange={event => setEmail(event.target.value)} className="form-control"></input>
+                                            <input required  value={email} onChange={event => setEmail(event.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>Phone Number</label>
-                                            <input value={phone} onChange={event => setPhone(event.target.value)} className="form-control"></input>
+                                            <input required type='text' pattern='[0-9]{10}' maxLength='10' value={phone} onChange={event => setPhone(event.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>Employee Position</label>
-                                            <input value={position} onChange={event => setPosition(event.target.value)} className="form-control"></input>
+                                            <input required value={position} onChange={event => setPosition(event.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>Image</label>
-                                            <input  onChange={handleImage} name='file' className="form-control" type='file'></input>
+                                            <input onChange={handleImage} name='file' className="form-control" type='file'></input>
                                         </div>
                                     </div>
 
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <button className="btn btn-success"  >Save</button>
-                                            <Link to='/' className='btn btn-danger'>back</Link>
+                                            <div className="col-md-12 text-center">
+                                                <button className="button-edit" onClick={handleUpload } >Save</button>
+                                                <Link to='/' className='button-delete'>Back</Link>
+                                            </div>
 
                                         </div>
                                     </div>
@@ -124,7 +146,9 @@ const Newemployee = () => {
 
                 </div>
             </div>
-        </div>
+        </div> 
+
+  
     );
 
 }

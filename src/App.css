@@ -1,5 +1,40 @@
 .App {
   text-align: center;
+  font-family:monospace;
+  background-color: white;
+}
+
+
+.button-edit {
+  color: #fff;
+  padding: 5px 30px;
+  border-radius: 100px;
+  background-color: #7bf0cd;
+  background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 87% at 26% 20%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: 2px 19px 31px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
+}
+
+.button-delete {
+  color: #fff;
+  padding: 5px 30px;
+  border-radius: 100px;
+  background-color: #f08c7b;
+  background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 87% at 26% 20%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: 2px 19px 31px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  border: 0;
+  cursor: pointer;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
 }
 
 .button-create {
@@ -10,18 +45,31 @@
   border-radius: 8px;
   box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
-  color: rgb(49, 42, 45);
-  display: flex;
+  color: white;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 10px;
   justify-content: center;
   line-height: 1em;
-  padding: 19px 24px;
+  padding: 10px 12px;
   text-decoration: none;
   cursor: pointer;
 }
 
+.search {
+  margin-bottom: 0.5em;
+  padding: 15px;
+  background-color: white;
+  border: 2px solid black;
+  color: #111;
+  font-size: 15px;
+  box-shadow: 3px 1px 0px 2px, 0px -1px 0px 2px rgba(0, 0, 0, 0.62);
+  height: 40px;    
+  font-family: 'Knewave', cursive;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  
 
+}
 
 
 @media (min-width: 768px) {

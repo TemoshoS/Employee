@@ -1,35 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { Link , useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Home = () => {
 
     const [search, setSearch] = useState('');
+    
 
 
     const navigation = useNavigate();
     const employeedelete = (id) => {
-         if(window.confirm('are you sure want to delete?')){
+        if (window.confirm('are you sure want to delete?')) {
 
-            fetch('http://localhost:8000/employee/' +id,{
+            fetch('http://localhost:8000/employee/' + id, {
                 method: "DELETE"
-               
-            }).then((res)=>{
+
+            }).then((res) => {
                 alert('Removed successfully')
                 window.location.reload();
-            }).catch((err)=>{
+            }).catch((err) => {
                 console.log(err.message)
             })
-         }
+        }
 
     }
 
     const employeeupdate = (id) => {
-        navigation('/employee/edit/'+id)
+        navigation('/employee/edit/' + id)
 
     }
 
     const [emp, setEmployee] = useState(null);
+    
     useEffect(() => {
         fetch("http://localhost:8000/employee").then((res) => {
             return res.json();
@@ -45,32 +47,43 @@ const Home = () => {
 
     return (
         <div className="container">
+
+            <div className="container bg-info text-white border py-3 my-3">
+                <h1>Employee Details</h1>
+            </div>
             <div className="card">
                 <div className="card-title">
                 </div>
                 <div className="card-body">
 
-                    <div>
-                        <Link to='/employee/create' className='button-create'>Add Employee</Link>
+                    <div >
+
+                        <Link to='/employee/create' className='button-create' style={{ float: 'left' }}>  Add New Employee</Link>
+
+
+
+                        <input onChange={(event) => setSearch(event.target.value)} style={{float:'center'}} className='search' placeholder='search employee' />
+
                     </div>
-                    <input onChange={(event) => setSearch(event.target.value)} placeholder='search employee'/>
                     <table className="table table-bordered">
-                        <thead className="bg-dark text-white">
+                        <thead >
                             <tr>
                                 <th>ID</th>
-                                <th>Name and Surname</th>
-                                <th>Email address</th>
-                                <th>Phone Number</th>
-                                <th>Employe Position</th>
-                                <th>Image</th>
-                                <th>Action</th>
+                                <th>NAME AND SURNAME</th>
+                                <th>EMAIL</th>
+                                <th>PHONE NUMBER</th>
+                                <th>EMPLOYEE POSITION</th>
+                                <th>IMAGE</th>
+                                <th>ATCIONS</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             {emp &&
-                                emp.filter((item) =>{
-                                    return search.toLowerCase()===''? item: item.name.toLowerCase().includes(search);
+                                emp.filter((item) => {
+                                  
+                                   return  search.toLowerCase() === '' ? item : item.id.toString().toLowerCase().includes(search.toLowerCase())
+                                    
                                 }).map(item => (
                                     < tr key={item.id}>
 
@@ -80,15 +93,15 @@ const Home = () => {
                                         <td>{item.phone}</td>
                                         <td>{item.position}</td>
                                         <td >
-                                            
 
-                                            <img src={`${item.image}`} style={{width:150, height:150}}/>
-                                            
-                                            </td>
 
-                                        
-                                        <td><a onClick={() => { employeeupdate(item.id) }} className='btn btn-success'>edit</a>
-                                            <a onClick={() => { employeedelete(item.id) }} className='btn btn-danger'>Delete</a>
+                                            <img src={`${item.image}`} style={{ width: 150, height: 150 }} />
+
+                                        </td>
+
+
+                                        <td><a onClick={() => { employeeupdate(item.id) }} className='button-edit'>Edit</a>
+                                            <a onClick={() => { employeedelete(item.id) }} className='button-delete'>Delete</a>
 
                                         </td>
                                     </tr>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams , Link, useNavigate } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 
 
 
@@ -7,11 +7,10 @@ const Update = () => {
 
     const { empid } = useParams();
 
-    //const [empinfo, setEmpinfo] = useState({});
-
     useEffect(() => {
 
-        fetch('http://localhost:3000/employee/' + empid).then((res) => {
+        fetch('http://localhost:8000/employee/' + empid
+        ).then((res) => {
             return res.json();
         }).then((resp) => {
 
@@ -20,11 +19,12 @@ const Update = () => {
             setEmail(resp.email);
             setPhone(resp.phone);
             setPosition(resp.position);
+            
 
         }).catch((err) => {
             console.log(err.message)
         })
-    },[]);
+    }, []);
 
     const [id, setId] = useState('');
     const [name, setName] = useState('');
@@ -36,14 +36,14 @@ const Update = () => {
 
     const handlesubmit = (event) => {
         event.preventDefault();
-        const empinfo = {id,name,email,phone,position};
-        
+        const empinfo = { id, name, email, phone, position };
 
-        fetch("http://localhost:3000/employee/" +empid, {
 
-        method: "PUT",
-        headers: {"content-type":"application/json"},
-        body:JSON.stringify(empinfo)
+        fetch("http://localhost:8000/employee/" + empid, {
+
+            method: "PUT",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(empinfo)
 
 
         }).then((res) => {
@@ -65,7 +65,12 @@ const Update = () => {
                 <div className="offset-lg-3 col-lg-6">
                     <form className="container" onSubmit={handlesubmit}>
 
+                        <div className="container bg-info text-white border py-3 my-3">
+                            <h1>Update employee details</h1>
+                        </div>
+
                         <div className="card" style={{ textAlign: "left" }}>
+
 
                             <div className="card-body">
 
@@ -96,7 +101,7 @@ const Update = () => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>Phone Number</label>
-                                            <input value={phone} onChange={event => setPhone(event.target.value)} className="form-control"></input>
+                                            <input type='number'  value={phone} onChange={event => setPhone(event.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
 
@@ -110,16 +115,18 @@ const Update = () => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>Image</label>
-                                            <input className="form-control"></input>
+                                            <input type='file' className="form-control"></input>
                                         </div>
                                     </div>
 
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <button className="btn btn-success" type="submit">Save</button>
-                                            <Link to='/' className='btn btn-danger'>back</Link>
 
+                                            <div className="col-md-12 text-center">
+                                                <button className="button-edit" type="submit">Save</button>
+                                                <Link to='/' className='button-delete'>back</Link>
+                                            </div>
                                         </div>
                                     </div>
 
