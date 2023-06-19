@@ -12,13 +12,15 @@ const Newemployee = () => {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [position, setPosition] = useState('');
-    const [image, setImage] = useState({ preview: '', data: '' })
-
     const navigation = useNavigate();
+
+
+    const [image, setImage] = useState({  data: '' })
+
+   
 
     const handleFileChange = (e) => {
         const img = {
-            preview: URL.createObjectURL(e.target.files[0]),
             data: URL.createObjectURL(e.target.files[0]),
         }
         setImage(img)
@@ -63,7 +65,7 @@ const Newemployee = () => {
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <label>Name and Surname</label>
+                                            <label>NAME & SURNAME</label>
                                             <input required value={name} onChange={event => setName(event.target.value)} className="form-control"></input>
 
                                         </div>
@@ -71,28 +73,28 @@ const Newemployee = () => {
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <label>Email</label>
+                                            <label>EMAIL</label>
                                             <input required  value={email} onChange={event => setEmail(event.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <label>Phone Number</label>
+                                            <label>PHONE NUMBER</label>
                                             <input required type='text' pattern='[0-9]{10}' maxLength='10' value={phone} onChange={event => setPhone(event.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <label>Employee Position</label>
+                                            <label>EMPLOYE POSITION</label>
                                             <input required value={position} onChange={event => setPosition(event.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <label>Image</label>
+                                            <label>PROFILE PICTURE</label>
                                             <input  onChange={handleFileChange} className="form-control" type='file'></input>
                                         </div>
                                     </div>

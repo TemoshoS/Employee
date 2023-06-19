@@ -4,6 +4,10 @@
   background-color: white;
 }
 
+label {
+font-weight: bold;
+}
+
 
 .button-edit {
   color: #fff;

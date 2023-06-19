@@ -17,85 +17,12 @@
       "image": "Images/food.jpg"
     },
     {
-      "name": "AB MARODI",
-      "email": "marodi@gmail.com",
-      "phone": "+27721371977",
-      "position": "CEO",
-      "id": 5,
-      "image": "Images/green.jpg"
-    },
-    {
-      "id": 6,
+      "id": 3,
       "name": "temosho shaku",
       "email": "temoshomaduane@gmail.com",
       "phone": "0721371977",
-      "position": "ceo",
-      "image": "Images/green.jpg"
-    },
-    {
-      "name": "temosho shaku",
-      "email": "temoshomaduane@gmail.com",
-      "phone": "0721371977",
-      "position": "",
-      "id": 7,
-      "image": "Images/green.jpg"
-    },
-    {
-      "name": "temosho shaku",
-      "email": "temoshomaduane@gmail.com",
-      "phone": "0721371977",
-      "position": "king",
-      "image": {
-        "preview": "blob:http://localhost:3000/4126a1ed-a6a0-4d36-ae02-c6613521c495",
-        "data": {}
-      },
-      "id": 8
-    },
-    {
-      "name": "temosho shaku",
-      "email": "temoshomaduane@gmail.com",
-      "phone": "0721371977",
-      "position": "l",
-      "image": {
-        "preview": "blob:http://localhost:3000/22df2eac-2200-4a16-8fff-f3cc2c910fde",
-        "data": {}
-      },
-      "id": 9
-    },
-    {
-      "name": "temosho shaku",
-      "email": "temoshomaduane@gmail.com",
-      "phone": "0721371977",
-      "position": "a",
-      "image": {
-        "preview": "blob:http://localhost:3000/733d3790-0892-494f-99e6-20da95756f3d",
-        "data": {}
-      },
-      "id": 10
-    },
-    {
-      "name": "temosho shaku",
-      "email": "temoshomaduane@gmail.com",
-      "phone": "0721371977",
-      "position": "n",
-      "image": {},
-      "id": 11
-    },
-    {
-      "name": "temosho shaku",
-      "email": "temoshomaduane@gmail.com",
-      "phone": "0721371977",
-      "position": "g",
-      "image": "blob:http://localhost:3000/060459a2-055d-4fd8-a638-ee17044317c8",
-      "id": 12
-    },
-    {
-      "name": "temosho shaku",
-      "email": "temoshomaduane@gmail.com",
-      "phone": "0721371977",
-      "position": "kk",
-      "image": "blob:http://localhost:3000/1512adf8-0808-4164-9ac8-fc6ba3549e5a",
-      "id": 13
+      "position": "Manager",
+      "image": "blob:http://localhost:3000/a25c938f-7037-4ad7-a993-8a5251ff79f8"
     }
   ]
 }

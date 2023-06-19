@@ -19,8 +19,8 @@ const Update = () => {
             setEmail(resp.email);
             setPhone(resp.phone);
             setPosition(resp.position);
-            //setImage(resp.image);
-            
+            setImage(resp.image);
+
 
         }).catch((err) => {
             console.log(err.message)
@@ -32,12 +32,25 @@ const Update = () => {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [position, setPosition] = useState('');
-
+    const [image, setImage] = useState({ data: '' });
     const navigation = useNavigate();
+
+
+    const handlefile = (event) => {
+        const img = {
+            data: URL.createObjectURL(event.target.file[0])
+
+        }
+        setImage(img)
+
+    }
+
+
+
 
     const handlesubmit = (event) => {
         event.preventDefault();
-        const empinfo = { id, name, email, phone, position };
+        const empinfo = { id, name, email, phone, position, image };
 
 
         fetch("http://localhost:8000/employee/" + empid, {
@@ -102,7 +115,7 @@ const Update = () => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>Phone Number</label>
-                                            <input type='number'  value={phone} onChange={event => setPhone(event.target.value)} className="form-control"></input>
+                                            <input type='number' value={phone} onChange={event => setPhone(event.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
 
@@ -112,13 +125,21 @@ const Update = () => {
                                             <input value={position} onChange={event => setPosition(event.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
-
                                     <div className="col-lg-12">
                                         <div className="form-group">
-                                            <label>Image</label>
-                                            <input type='file' className="form-control"></input>
+                                            <label>Profile</label>
+                                            <img src={`${image}`} style={{ width: 150, height: 150 }} />
+
                                         </div>
                                     </div>
+                                    {  /* <div className="col-lg-12">
+                                        <div className="form-group">
+                                            <label>Image</label>
+                                            <input onChange={handlefile} type='file' className="form-control"></input>
+                                        </div>
+                                    </div>
+                                    */}
+
 
 
                                     <div className="col-lg-12">
