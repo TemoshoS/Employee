@@ -45,6 +45,10 @@ const Home = () => {
 
 
 
+    
+
+
+
     return (
         <div className="container">
 
@@ -96,6 +100,7 @@ const Home = () => {
 
 
                                             <img src={`${item.image}`} style={{ width: 150, height: 150 }} />
+                                        
 
                                         </td>
 

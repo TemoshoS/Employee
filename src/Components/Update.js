@@ -19,6 +19,7 @@ const Update = () => {
             setEmail(resp.email);
             setPhone(resp.phone);
             setPosition(resp.position);
+            //setImage(resp.image);
             
 
         }).catch((err) => {
