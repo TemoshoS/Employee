@@ -12,21 +12,19 @@ const Newemployee = () => {
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [position, setPosition] = useState('');
+    const [image, setImage] = useState({ data: '' })
     const navigation = useNavigate();
 
 
-    const [image, setImage] = useState({  data: '' })
-
-   
-
-    const handleFileChange = (e) => {
+    const handleFileChange = (event) => {
         const img = {
-            data: URL.createObjectURL(e.target.files[0]),
+            data: URL.createObjectURL(event.target.files[0]),
+
         }
         setImage(img)
     }
-  
-    const data ={
+
+    const data = {
 
         name: name,
         email: email,
@@ -35,19 +33,19 @@ const Newemployee = () => {
         image: image.data
     };
 
-    const subMitForm=(event)=>{
+    const subMitForm = (event) => {
 
         event.preventDefault();
         axios.post("http://localhost:8000/employee", data
-        ).then(  alert('Saved successfully'), navigation("/")  );
+        ).then(alert('Saved successfully'), navigation("/"));
     }
-    
+
 
 
 
     return (
 
-       <div>
+        <div>
 
             <div className="row">
                 <div className="offset-lg-3 col-lg-6">
@@ -61,7 +59,7 @@ const Newemployee = () => {
 
                                 <div className="row">
 
-                                    
+
 
                                     <div className="col-lg-12">
                                         <div className="form-group">
@@ -74,7 +72,7 @@ const Newemployee = () => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>EMAIL</label>
-                                            <input required  value={email} onChange={event => setEmail(event.target.value)} className="form-control"></input>
+                                            <input required value={email} onChange={event => setEmail(event.target.value)} className="form-control"></input>
                                         </div>
                                     </div>
 
@@ -95,7 +93,7 @@ const Newemployee = () => {
                                     <div className="col-lg-12">
                                         <div className="form-group">
                                             <label>PROFILE PICTURE</label>
-                                            <input  onChange={handleFileChange} className="form-control" type='file'></input>
+                                            <input onChange={handleFileChange} className="form-control" type='file'></input>
                                         </div>
                                     </div>
 
@@ -120,9 +118,9 @@ const Newemployee = () => {
 
                 </div>
             </div>
-        </div> 
+        </div>
 
-  
+
     );
 
 }

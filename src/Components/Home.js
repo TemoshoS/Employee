@@ -5,17 +5,21 @@ import { Link, useNavigate } from 'react-router-dom';
 const Home = () => {
 
     const [search, setSearch] = useState('');
-    
-
-
     const navigation = useNavigate();
+
+    const employeeview = (id) => {
+        navigation('/employee/view/' + id )
+
+    }
+
+
     const employeedelete = (id) => {
         if (window.confirm('are you sure want to delete?')) {
 
             fetch('http://localhost:8000/employee/' + id, {
                 method: "DELETE"
 
-            }).then((res) => {
+            }).then(() => {
                 alert('Removed successfully')
                 window.location.reload();
             }).catch((err) => {
@@ -25,13 +29,16 @@ const Home = () => {
 
     }
 
+
+
     const employeeupdate = (id) => {
         navigation('/employee/edit/' + id)
 
     }
 
+
     const [emp, setEmployee] = useState(null);
-    
+
     useEffect(() => {
         fetch("http://localhost:8000/employee").then((res) => {
             return res.json();
@@ -45,14 +52,14 @@ const Home = () => {
 
 
 
-    
+
 
 
 
     return (
         <div className="container">
 
-            <div className="container bg-info text-white border py-3 my-3">
+            <div className="container bg-dark text-white border py-3 my-3">
                 <h1>Employee Details</h1>
             </div>
             <div className="card">
@@ -66,7 +73,7 @@ const Home = () => {
 
 
 
-                        <input onChange={(event) => setSearch(event.target.value)} style={{float:'center'}} className='search' placeholder='search employee' />
+                        <input onChange={(event) => setSearch(event.target.value)} className='search' placeholder='search employee' />
 
                     </div>
                     <table className="table table-bordered">
@@ -85,9 +92,9 @@ const Home = () => {
 
                             {emp &&
                                 emp.filter((item) => {
-                                  
-                                   return  search.toLowerCase() === '' ? item : item.id.toString().toLowerCase().includes(search.toLowerCase())
-                                    
+
+                                    return search.toLowerCase() === '' ? item : item.id.toString().toLowerCase().includes(search.toLowerCase())
+
                                 }).map(item => (
                                     < tr key={item.id}>
 
@@ -97,17 +104,15 @@ const Home = () => {
                                         <td>{item.phone}</td>
                                         <td>{item.position}</td>
                                         <td >
-
-
                                             <img src={`${item.image}`} style={{ width: 150, height: 150 }} />
-                                        
 
                                         </td>
 
 
-                                        <td><a onClick={() => { employeeupdate(item.id) }} className='button-edit'>Edit</a>
+                                        <td>
+                                            <a onClick={() => { employeeview(item.id) }}  className='button-view'>View</a>
+                                            <a onClick={() => { employeeupdate(item.id) }} className='button-edit'>Edit</a>
                                             <a onClick={() => { employeedelete(item.id) }} className='button-delete'>Delete</a>
-
                                         </td>
                                     </tr>
                                 ))

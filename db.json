@@ -17,12 +17,12 @@
       "image": "Images/food.jpg"
     },
     {
-      "id": 3,
-      "name": "temosho shaku",
-      "email": "temoshomaduane@gmail.com",
-      "phone": "0721371977",
-      "position": "Manager",
-      "image": "blob:http://localhost:3000/a25c938f-7037-4ad7-a993-8a5251ff79f8"
+      "name": "Moses Spandiel",
+      "email": "moses@gmail.com",
+      "phone": "0783878778",
+      "position": "Striker",
+      "image": "blob:http://localhost:3000/c8a3a975-33f5-43f4-8fdf-bd91969ad71b",
+      "id": 6
     }
   ]
 }
