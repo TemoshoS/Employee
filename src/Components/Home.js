@@ -5,10 +5,12 @@ import { Link, useNavigate } from 'react-router-dom';
 const Home = () => {
 
     const [search, setSearch] = useState('');
+    const [emp, setEmployee] = useState(null);
     const navigation = useNavigate();
 
+
     const employeeview = (id) => {
-        navigation('/employee/view/' + id )
+        navigation('/employee/view/' + id)
 
     }
 
@@ -29,7 +31,9 @@ const Home = () => {
 
     }
 
-
+    const addchange = () => {
+        navigation('/employee/create')
+    }
 
     const employeeupdate = (id) => {
         navigation('/employee/edit/' + id)
@@ -37,7 +41,7 @@ const Home = () => {
     }
 
 
-    const [emp, setEmployee] = useState(null);
+
 
     useEffect(() => {
         fetch("http://localhost:8000/employee").then((res) => {
@@ -63,13 +67,12 @@ const Home = () => {
                 <h1>Employee Details</h1>
             </div>
             <div className="card">
-                <div className="card-title">
-                </div>
+    
                 <div className="card-body">
 
                     <div >
 
-                        <Link to='/employee/create' className='button-create' style={{ float: 'left' }}>  Add New Employee</Link>
+                        <button onClick={addchange} className='button-create' style={{ float: 'left' }}>  Add New Employee</button>
 
 
 
@@ -110,7 +113,7 @@ const Home = () => {
 
 
                                         <td>
-                                            <a onClick={() => { employeeview(item.id) }}  className='button-view'>View</a>
+                                            <a onClick={() => { employeeview(item.id) }} className='button-view'>View</a>
                                             <a onClick={() => { employeeupdate(item.id) }} className='button-edit'>Edit</a>
                                             <a onClick={() => { employeedelete(item.id) }} className='button-delete'>Delete</a>
                                         </td>
